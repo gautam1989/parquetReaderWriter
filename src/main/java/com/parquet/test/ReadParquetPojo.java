@@ -59,6 +59,7 @@ public class ReadParquetPojo {
     // Read Pojos, but filter down to just Penguins
     FilterPredicate predicate = eq(binaryColumn("data"), Binary.fromString("penguin"));
    //    FilterPredicate predicate = eq(FilterApi.longColumn("id"), 100000L);
+//    try (ParquetReader<Pojo> reader = AvroParquetReader.<Pojo>builder(HadoopInputFile.fromPath(dataFile, conf))
 
     try (ParquetReader<Pojo> reader = AvroParquetReader.<Pojo>builder(dataFile)
         .withDataModel(new ReflectData(Pojo.class.getClassLoader()))
